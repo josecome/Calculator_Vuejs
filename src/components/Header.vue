@@ -22,9 +22,7 @@
   
   <style scoped>
   header {
-   margin: auto;
-   width: 50%;
    margin-top: 30px;
-   text-align: center;
+   text-align: left;
   }
   </style>

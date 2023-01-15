@@ -7,7 +7,7 @@ import Footer from './components/Footer.vue'
 
 <template>
   <div id="main">
-    <Header />
+    <Header title="Calculator"/>
     <router-view></router-view>
     <Footer v-show="homePage" />
   </div>

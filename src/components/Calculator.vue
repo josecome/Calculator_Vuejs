@@ -94,9 +94,16 @@ export default {
             if(this.lastop === "NA"){
                 return;
             } else{
-
+                if(this.lastop === "-"){
+                   this.nmbr = Number(this.prevnmbr) - Number(this.nmbr);
+                } else if(this.lastop === "+"){
+                    this.nmbr = this.prevnmbr + this.nmbr;
+                } else if(this.lastop === "/"){
+                    this.nmbr = this.prevnmbr / this.nmbr;
+                } else if(this.lastop === "x"){
+                    this.nmbr = this.prevnmbr * this.nmbr;
+                }
             }
-            this.nmbr = 9999;
             this.prevnmbr = 0;
             return;
            } 
