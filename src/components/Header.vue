@@ -16,24 +16,15 @@
     },
     components: {
       Button,
-    },
-    computed: {
-      homePage() {
-        if (this.$route.path === '/') {
-          return true
-        } else {
-          return false
-        }
-      },
-    },
+    }
   }
   </script>
   
   <style scoped>
   header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+   margin: auto;
+   width: 50%;
+   margin-top: 30px;
+   text-align: center;
   }
   </style>

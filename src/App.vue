@@ -6,10 +6,10 @@ import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <div>
+  <div id="main">
     <Header />
     <router-view></router-view>
-    <Footer />
+    <Footer v-show="homePage" />
   </div>
     
 </template>
@@ -30,9 +30,22 @@ export default {
   methods: {
     
   },
+  computed: {
+    homePage() {
+        if (this.$route.path === '/') {
+          return true
+        } else {
+          return false
+        }
+      },
+  }
 }
 </script>
 <style scoped>
-
-
+#main{
+  margin-top: 30px;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+}
 </style>
