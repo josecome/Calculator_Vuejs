@@ -120,7 +120,7 @@ export default {
         clean_screen(){
             this.prevnmbr = 0;
             this.nmbr = 0;
-            lastop: "NA";
+            this.lastop = "NA";
         }
     },
     computed: {
@@ -152,6 +152,7 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  width: 60px;
 }
 #lbl {
   width: 100%;  
