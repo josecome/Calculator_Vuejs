@@ -6,12 +6,14 @@ import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <div id="main">
-    <Header title="Calculator"/>
+  <div id="main" :class="changeBackground ? 'bck' : 'bck2'">
+    <Header 
+      title="Calculator"
+      @toggle-bckg = "toggleBackground"
+    />
     <router-view></router-view>
     <Footer v-show="homePage" />
-  </div>
-    
+  </div>    
 </template>
 
 <script>
@@ -24,11 +26,14 @@ export default {
   },
   data() {
     return {
-      
+      changeBackground: false
     }
   },
   methods: {
-    
+    toggleBackground() {
+      console.log('Changed!'),
+      this.changeBackground = !this.changeBackground
+    }
   },
   computed: {
     homePage() {
@@ -47,5 +52,12 @@ export default {
   text-align: center;
   margin: auto;
   width: 50%;
+  display: table;
+}
+.bck{
+  background-color: #85C1E9;
+}
+.bck2{
+  background-color: white;
 }
 </style>

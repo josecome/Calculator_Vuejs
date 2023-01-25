@@ -1,7 +1,11 @@
 <template>
     <header>
       <h1>{{ title }}</h1>
-
+      <Button
+        @btn-click="toggleBackground"
+        :text="changeBackground ? 'Bckg Blue' : 'Bckg White'"
+        :color="changeBackground ? 'white' : 'blue'"
+    />
     </header>
   </template>
   
@@ -11,12 +15,23 @@
   export default {
     name: 'Header',
     props: {
-      title: String,
-      CalculatorType: Boolean,
+      title: String
     },
     components: {
       Button,
+    },
+    data(){
+      return{
+        changeBackground: false
+      }      
+    },
+    methods: {
+      toggleBackground() {
+      this.changeBackground = !this.changeBackground,
+      this.$emit('toggle-bckg')
     }
+  },
+    
   }
   </script>
   
