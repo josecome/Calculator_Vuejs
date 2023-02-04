@@ -1,6 +1,6 @@
 # This is Calculator Vue app
 
-![Calculator Image](https://github.com/josecome/Calculator_Vuejs/tree/main/public/Calculator.jpg?raw=true)
+ [[https://github.com/josecome/Calculator_Vuejs/tree/main/public/Calculator.jpg|image]]
 
 ## Project Setup
 
