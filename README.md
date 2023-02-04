@@ -1,5 +1,7 @@
 # This is Calculator Vue app
 
+![Calculator Image](https://github.com/josecome/Calculator_Vuejs/public/main/Calculator.jpg?raw=true)
+
 ## Project Setup
 
 ```sh
