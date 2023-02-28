@@ -1,6 +1,10 @@
 # This is Calculator Vue app
 
+Standard Calculator
  <img src="public/Calculator.jpg">
+
+Scientific Calculator
+ <img src="public/Scientific_Calculator.jpg">
 
 ## Project Setup
 
