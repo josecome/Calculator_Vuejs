@@ -2,7 +2,7 @@
     <div>
         <table>
             <tr>
-                <td colspan="3">
+                <td colspan="5">
                     <div id="lbl">
                         <label>{{ nmbr }}</label>
                     </div>                    
@@ -24,6 +24,12 @@
                 <td>
                     <button class="oper" @click="addNmber($event)">/</button>
                 </td>
+                <td>
+                    <button className="oper" onClick={addNmber}>sin</button>
+                </td>
+                <td>
+                    <button className="oper" onClick={addNmber}>Pi</button>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -38,6 +44,12 @@
                 <td>
                     <button class="oper" @click="addNmber($event)">x</button>
                 </td>
+                <td>
+                    <button className="oper" onClick={addNmber}>cons</button>
+                </td>   
+                <td>
+                    <button className="oper" onClick={addNmber}>e</button>
+                </td>   
             </tr>
             <tr>
                 <td>
@@ -52,6 +64,12 @@
                 <td>
                     <button class="oper" @click="addNmber($event)">-</button>
                 </td>
+                <td>
+                    <button className="oper" onClick={addNmber}>log</button>
+                </td>      
+                <td>
+                    <button className="oper" onClick={addNmber}>Exp</button>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -65,6 +83,12 @@
                 </td>
                 <td>
                     <button class="oper" @click="addNmber($event)">+</button>
+                </td>
+                <td>
+                    <button className="oper" onClick={addNmber}>ln</button>
+                </td>
+                <td>
+                    <button className="oper" onClick={addNmber}>x!</button>
                 </td>
             </tr>
         </table>

@@ -22,7 +22,7 @@
     },
     data(){
       return{
-        changeBackground: false
+        changeBackground: false,
       }      
     },
     methods: {
