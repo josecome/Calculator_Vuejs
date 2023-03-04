@@ -103,6 +103,7 @@ export default {
                 } else if(this.lastop === "x"){
                     this.nmbr = this.prevnmbr * this.nmbr;
                 }
+                console.log("nmbr: " + this.nmbr);
             }
             this.prevnmbr = 0;
             return;
@@ -121,6 +122,14 @@ export default {
             this.prevnmbr = 0;
             this.nmbr = 0;
             this.lastop = "NA";
+        }
+    },
+    watch: {
+        nmbr(val, prevval) {
+            //console.log("val: " + String(val) + "," + String(prevval))
+            if((String(val) === "NaN" || String(val) === "Infinity") && String(prevval) === "0") {
+               alert("Any number can't divide zero!");
+            }
         }
     },
     computed: {
