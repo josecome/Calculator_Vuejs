@@ -11,64 +11,12 @@
                     <button class="btn_clean" @click="clean_screen()">C</button>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <button @click="addNmber($event)">7</button>
-                </td>
-                <td>
-                    <button @click="addNmber($event)">8</button>
-                </td>
-                <td>
-                    <button @click="addNmber($event)">9</button>
-                </td>
-                <td>
-                    <button class="oper" @click="addNmber($event)">/</button>
+            <tr v-for="btns_rows in buttons_in_array">
+                <td v-for="btns in btns_rows">
+                    <button @click="addNmber($event)">{{ btns }}</button>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <button @click="addNmber($event)">4</button>
-                </td>
-                <td>
-                    <button @click="addNmber($event)">5</button>
-                </td>
-                <td>
-                    <button @click="addNmber($event)">6</button>
-                </td>
-                <td>
-                    <button class="oper" @click="addNmber($event)">x</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button @click="addNmber($event)">1</button>
-                </td>
-                <td>
-                    <button @click="addNmber($event)">2</button>
-                </td>
-                <td>
-                    <button @click="addNmber($event)">3</button>
-                </td>
-                <td>
-                    <button class="oper" @click="addNmber($event)">-</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button @click="addNmber($event)">0</button>
-                </td>
-                <td>
-                    <button @click="addNmber($event)">.</button>
-                </td>
-                <td>
-                    <button class="oper2" @click="addNmber($event)">=</button>
-                </td>
-                <td>
-                    <button class="oper" @click="addNmber($event)">+</button>
-                </td>
-            </tr>
-        </table>
-        
+        </table>        
     </div>
 </template>
   
@@ -85,7 +33,8 @@ export default {
         return{
             prevnmbr: 0,
             nmbr: 0,
-            lastop: "NA"
+            lastop: "NA",
+            buttons_in_array: [[7, 8, 9, "/"], [4, 5, 6, "x"],[1, 2, 3, "-"], [0, ".", "=", "+"]]
         }
     },
     methods: {
