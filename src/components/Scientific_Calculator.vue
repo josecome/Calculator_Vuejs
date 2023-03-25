@@ -40,7 +40,8 @@ export default {
     },
     methods: {
         addNmber(v){
-           if("=" === v.target.textContent){
+           var targetedVal = v.target.textContent; 
+           if("=" === targetedVal){
             if(this.lastop === "NA"){
                 return;
             } else {
@@ -52,7 +53,7 @@ export default {
                     this.nmbr = this.prevnmbr / this.nmbr;
                 } else if(this.lastop === "x"){
                     this.nmbr = this.prevnmbr * this.nmbr;
-                } else if(this.lastop === "Exp"){
+                } else if(this.lastop === "exp"){
                     this.nmbr = this.ExponetialOfNumber(this.prevnmbr, this.nmbr);
                 } else if(this.lastop === "sin"){
                     this.nmbr = this.calculateSinCosTan('sin', this.prevnmbr);
@@ -65,25 +66,24 @@ export default {
                 this.prevnmbr = 0;
                 return;
             } 
-            if("x!" === v.target.textContent){
+            if("x!" === targetedVal){
                 console.log("Value: " + this.nmbr)
                 this.nmbr = this.calc_factorial(this.nmbr);
                 console.log("Value2: " + this.nmbr)
                 return;
-            } else if(v.target.textContent === "pi") {
+            } else if(targetedVal === "pi") {
                     this.nmbr = 3.141592653589793238;             
-            } else if(v.target.textContent === "e") {
+            } else if(targetedVal === "e") {
                     this.nmbr = 2.7182818;             
-            } else if (!["=", "/", "+", "-", "x", "exp", "sin", "cos", "tan"].includes(v.target.textContent)){ 
-                this.nmbr = Number("" + this.nmbr + v.target.textContent);
+            } else if (!["=", "/", "+", "-", "x", "exp", "sin", "cos", "tan"].includes(targetedVal)){ 
+                this.nmbr = Number("" + this.nmbr + targetedVal);
            } else {
-                if(v.target.textContent === "pi" || v.target.textContent === "e") {
+                if(targetedVal === "pi" || targetedVal === "e") {
                     return;
                 }
                 this.prevnmbr = this.nmbr; 
                 this.nmbr = 0;
-                this.lastop = v.target.textContent;
-                console.log("O: " + this.prevnmbr + v.target.textContent)
+                this.lastop = targetedVal;
            }
         },
         clean_screen(){
@@ -105,6 +105,10 @@ export default {
         calculateSinCosTan(oper, value) {
             if (value > 90) {
                 value = value % 90; 
+            }
+            if(![30, 45, 60].includes(value)){
+                alert("Choose number that is 30 or 45 or 60 or multiple that when devide 90 the result match one of the value given");
+                return value;
             }
             var _30 = this.sin_cos_tan_notable_values[0];
             var _45 = this.sin_cos_tan_notable_values[1];

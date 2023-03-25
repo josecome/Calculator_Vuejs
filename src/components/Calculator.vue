@@ -39,7 +39,8 @@ export default {
     },
     methods: {
         addNmber(v){
-           if("=" === v.target.textContent){
+           var targetedVal = v.target.textContent;  
+           if("=" === targetedVal){
             if(this.lastop === "NA"){
                 return;
             } else{
@@ -52,19 +53,16 @@ export default {
                 } else if(this.lastop === "x"){
                     this.nmbr = this.prevnmbr * this.nmbr;
                 }
-                console.log("nmbr: " + this.nmbr);
             }
             this.prevnmbr = 0;
             return;
            } 
-           if (!("=/+-x").includes(v.target.textContent)){ 
-            this.nmbr = Number("" + this.nmbr + v.target.textContent);
-            console.log("N: " + this.nmbr)
+           if (!["=", "/", "+", "-", "x"].includes(targetedVal)){ 
+            this.nmbr = Number("" + this.nmbr + targetedVal);
            } else {
             this.prevnmbr = this.nmbr; 
             this.nmbr = 0;
-            this.lastop = v.target.textContent;
-            console.log("O: " + this.prevnmbr + v.target.textContent)
+            this.lastop = targetedVal;
            }
         },
         clean_screen(){
@@ -75,9 +73,8 @@ export default {
     },
     watch: {
         nmbr(val, prevval) {
-            //console.log("val: " + String(val) + "," + String(prevval))
             if((String(val) === "NaN" || String(val) === "Infinity") && String(prevval) === "0") {
-               alert("Any number can't divide zero!");
+                alert("Any number can't divide zero!");
             }
         }
     },

@@ -33,8 +33,7 @@ export default {
   methods: {
     ChangeCalculator() {
       this.calc = !this.calc;
-      this.calc ? this.calculator_type = 'Scientific' : this.calculator_type = 'Standard'   ;   
-      console.log(this.calculator_type + ',' + this.calc);
+      this.calc ? this.calculator_type = 'Scientific' : this.calculator_type = 'Standard';   
       
     }
   }
