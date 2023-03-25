@@ -51,6 +51,8 @@ export default {
                     this.nmbr = this.prevnmbr / this.nmbr;
                 } else if(this.lastop === "x"){
                     this.nmbr = this.prevnmbr * this.nmbr;
+                } else if(this.lastop === "Exp"){
+                    this.nmbr = this.ExponetialOfNumber(this.prevnmbr, this.nmbr);
                 }
             }
             this.prevnmbr = 0;
@@ -61,7 +63,7 @@ export default {
                 this.nmbr = this.calc_factorial(this.nmbr);
                 console.log("Value2: " + this.nmbr)
                 return;
-           } else if (!("=/+-x").includes(v.target.textContent)){ 
+           } else if (!("=/+-xExp").includes(v.target.textContent)){ 
                 this.nmbr = Number("" + this.nmbr + v.target.textContent);
                 console.log("N: " + this.nmbr)
            } else {
@@ -80,6 +82,13 @@ export default {
         calc_factorial(n) {
             return n > 1 ? this.factorial(n) : n;
         },
+        ExponetialOfNumber(v1, v2){
+           var v_result = 1; 
+           for(var i = 0; i < Number(v2); i++){
+               v_result = v_result * v1; 
+           }
+           return v_result;
+        }
     },
     computed: {
 
