@@ -34,7 +34,8 @@ export default {
             prevnmbr: 0,
             nmbr: 0,
             lastop: "NA",
-            buttons_in_array: [[7, 8, 9, "/", "sin", "Pi"], [4, 5, 6, "x", "cons", "e"],[1, 2, 3, "-", "log", "Exp"], [0, ".", "=", "+", "ln", "x!"]]
+            buttons_in_array: [[7, 8, 9, "/", "sin", "pi"], [4, 5, 6, "x", "cos", "e"],[1, 2, 3, "-", "log", "exp"], [0, ".", "=", "+", "ln", "x!"]],
+            sin_cos_tan_notable_values: [[30, 0.5, 0.866, 0.5773], [45, 0.707, 0.707, 1], [60, 0.866, 0.5, 1.732]]
         }
     },
     methods: {
@@ -53,6 +54,12 @@ export default {
                     this.nmbr = this.prevnmbr * this.nmbr;
                 } else if(this.lastop === "Exp"){
                     this.nmbr = this.ExponetialOfNumber(this.prevnmbr, this.nmbr);
+                } else if(this.lastop === "sin"){
+                    this.nmbr = this.calculateSinCosTan('sin', this.prevnmbr);
+                }  else if(this.lastop === "cos"){
+                    this.nmbr = this.calculateSinCosTan('cos', this.prevnmbr);
+                }  else if(this.lastop === "tan"){
+                    this.nmbr = this.calculateSinCosTan('tan', this.prevnmbr);
                 } 
             }
                 this.prevnmbr = 0;
@@ -63,12 +70,14 @@ export default {
                 this.nmbr = this.calc_factorial(this.nmbr);
                 console.log("Value2: " + this.nmbr)
                 return;
-            } else if(v.target.textContent === "Pi") {
+            } else if(v.target.textContent === "pi") {
                     this.nmbr = 3.141592653589793238;             
-            } else if (!("=/+-xExp").includes(v.target.textContent)){ 
+            } else if(v.target.textContent === "e") {
+                    this.nmbr = 2.7182818;             
+            } else if (!["=", "/", "+", "-", "x", "exp", "sin", "cos", "tan"].includes(v.target.textContent)){ 
                 this.nmbr = Number("" + this.nmbr + v.target.textContent);
            } else {
-                if(v.target.textContent === "Pi") {
+                if(v.target.textContent === "pi" || v.target.textContent === "e") {
                     return;
                 }
                 this.prevnmbr = this.nmbr; 
@@ -92,6 +101,29 @@ export default {
                v_result = v_result * v1; 
            }
            return v_result;
+        },
+        calculateSinCosTan(oper, value) {
+            if (value > 90) {
+                value = value % 90; 
+            }
+            var _30 = this.sin_cos_tan_notable_values[0];
+            var _45 = this.sin_cos_tan_notable_values[1];
+            var _60 = this.sin_cos_tan_notable_values[2];
+
+            if(value === 30) {
+                if(oper === "sin") { return _30[1]} 
+                else if(oper === "cos") {return _45[2]} 
+                else if(oper === "tan") {return _60[3]}
+            } else if(value === 45) {
+                if(oper === "sin") { return _30[1]} 
+                else if(oper === "cos") {return _45[2]} 
+                else if(oper === "tan") {return _60[3]}
+            } else if(value === 60) {
+                if(oper === "sin") { return _30[1]} 
+                else if(oper === "cos") {return _45[2]} 
+                else if(oper === "tan") {return _60[3]}
+            }   
+            return value;
         }
     },
     computed: {
