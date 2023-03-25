@@ -42,7 +42,7 @@ export default {
            if("=" === v.target.textContent){
             if(this.lastop === "NA"){
                 return;
-            } else{
+            } else {
                 if(this.lastop === "-"){
                    this.nmbr = Number(this.prevnmbr) - Number(this.nmbr);
                 } else if(this.lastop === "+"){
@@ -56,21 +56,30 @@ export default {
             this.prevnmbr = 0;
             return;
            } 
-           if (!("=/+-x").includes(v.target.textContent)){ 
-            this.nmbr = Number("" + this.nmbr + v.target.textContent);
-            console.log("N: " + this.nmbr)
+           if("x!" === v.target.textContent){
+                console.log("Value: " + this.nmbr)
+                this.nmbr = this.calc_factorial(this.nmbr);
+                console.log("Value2: " + this.nmbr)
+                return;
+           } else if (!("=/+-x").includes(v.target.textContent)){ 
+                this.nmbr = Number("" + this.nmbr + v.target.textContent);
+                console.log("N: " + this.nmbr)
            } else {
-            this.prevnmbr = this.nmbr; 
-            this.nmbr = 0;
-            this.lastop = v.target.textContent;
-            console.log("O: " + this.prevnmbr + v.target.textContent)
+                this.prevnmbr = this.nmbr; 
+                this.nmbr = 0;
+                this.lastop = v.target.textContent;
+                console.log("O: " + this.prevnmbr + v.target.textContent)
            }
         },
         clean_screen(){
             this.prevnmbr = 0;
             this.nmbr = 0;
             this.lastop = "NA";
-        }
+        },
+        factorial(y){var f = 1; for(var i = y; i >= 1; i--){f = f * i;/* console.log(i); */} return f},
+        calc_factorial(n) {
+            return n > 1 ? this.factorial(n) : n;
+        },
     },
     computed: {
 
