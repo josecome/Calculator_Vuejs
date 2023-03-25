@@ -53,20 +53,24 @@ export default {
                     this.nmbr = this.prevnmbr * this.nmbr;
                 } else if(this.lastop === "Exp"){
                     this.nmbr = this.ExponetialOfNumber(this.prevnmbr, this.nmbr);
-                }
+                } 
             }
-            this.prevnmbr = 0;
-            return;
-           } 
-           if("x!" === v.target.textContent){
+                this.prevnmbr = 0;
+                return;
+            } 
+            if("x!" === v.target.textContent){
                 console.log("Value: " + this.nmbr)
                 this.nmbr = this.calc_factorial(this.nmbr);
                 console.log("Value2: " + this.nmbr)
                 return;
-           } else if (!("=/+-xExp").includes(v.target.textContent)){ 
+            } else if(v.target.textContent === "Pi") {
+                    this.nmbr = 3.141592653589793238;             
+            } else if (!("=/+-xExp").includes(v.target.textContent)){ 
                 this.nmbr = Number("" + this.nmbr + v.target.textContent);
-                console.log("N: " + this.nmbr)
            } else {
+                if(v.target.textContent === "Pi") {
+                    return;
+                }
                 this.prevnmbr = this.nmbr; 
                 this.nmbr = 0;
                 this.lastop = v.target.textContent;
