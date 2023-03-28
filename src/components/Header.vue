@@ -4,7 +4,7 @@
       <Button
         @btn-click="toggleBackground"
         :text="changeBackground ? 'Bckg Blue' : 'Bckg White'"
-        :color="changeBackground ? 'white' : 'blue'"
+        :color="'white'"        
     />
     </header>
   </template>

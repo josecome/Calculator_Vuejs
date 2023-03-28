@@ -3,17 +3,27 @@
         <table>
             <tr>
                 <td colspan="3">
-                    <div id="lbl">
-                        <label>{{ nmbr }}</label>
-                    </div>                    
+                    <Label
+                        :text="nmbr" 
+                    />                 
                 </td>
                 <td>
-                    <button class="btn_clean" @click="clean_screen()">C</button>
+                    <Button
+                        @btn-click="clean_screen()"
+                        :text="'C'"
+                        :color="'#FF0000'"
+                        :class_name="'btn'"
+                    />
                 </td>
             </tr>
             <tr v-for="btns_rows in buttons_in_array">
                 <td v-for="btns in btns_rows">
-                    <button @click="addNmber($event)">{{ btns }}</button>
+                    <Button
+                        @btn-click="addNmber(btns)"
+                        :text="btns"
+                        :color="'rgba(51, 51, 51, 0.05)'"
+                        :class_name="'btn2'"
+                    />
                 </td>
             </tr>
         </table>        
@@ -21,13 +31,16 @@
 </template>
   
 <script>
+import Label from './Label.vue'
+import Button from './Button.vue'
 export default {
     name: 'Calculator',
     props: {
         
     },
     components: {
-        
+        Label,
+        Button
     },
     data(){
         return{
@@ -39,7 +52,7 @@ export default {
     },
     methods: {
         addNmber(v){
-           var targetedVal = v.target.textContent;  
+           var targetedVal = v;  
            if("=" === targetedVal){
             if(this.lastop === "NA"){
                 return;
@@ -86,44 +99,12 @@ export default {
 </script>
 
 <style scoped>
-button {
-  background-color: rgba(51, 51, 51, 0.05);
-  border-radius: 8px;
-  border-width: 0;
-  color: #333333;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 10px 12px;
-  text-align: center;
-  transition: all 200ms;
-  vertical-align: baseline;
-  white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 60px;
-}
-#lbl {
-  width: 100%;  
-  border: 1px solid gray; 
-  border-radius: 6px;
-  text-align: right;  
-}
+
 .oper{
     background-color: #A9A9A9;
 }
 .oper2{
     background-color: #0000FF;
-    color: white;
-}
-.btn_clean{
-    background-color: #FF0000;
     color: white;
 }
 </style>
