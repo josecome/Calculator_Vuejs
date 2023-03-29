@@ -3,17 +3,27 @@
         <table>
             <tr>
                 <td colspan="5">
-                    <div id="lbl">
-                        <label>{{ nmbr }}</label>
-                    </div>                    
+                    <Label
+                        :text="nmbr" 
+                    />                    
                 </td>
                 <td>
-                    <button class="btn_clean" @click="clean_screen()">C</button>
+                    <Button
+                        @btn-click="clean_screen()"
+                        :text="'C'"
+                        :color="'#FF0000'"
+                        :class_name="'btn'"
+                    />
                 </td>
             </tr>
             <tr v-for="btns_rows in buttons_in_array">
                 <td v-for="btns in btns_rows">
-                    <button @click="addNmber($event)">{{ btns }}</button>
+                    <Button
+                        @btn-click="addNmber(btns)"
+                        :text="btns"
+                        :color="'rgba(51, 51, 51, 0.05)'"
+                        :class_name="'btn2'"
+                    />
                 </td>
             </tr>
         </table>        
@@ -21,13 +31,16 @@
 </template>
   
 <script>
+import Label from './Label.vue'
+import Button from './Button.vue'
 export default {
     name: 'Calculator',
     props: {
         
     },
     components: {
-        
+        Label,
+        Button        
     },
     data(){
         return{
@@ -40,7 +53,7 @@ export default {
     },
     methods: {
         addNmber(v){
-           var targetedVal = v.target.textContent; 
+           var targetedVal = v; 
            if("=" === targetedVal){
             if(this.lastop === "NA"){
                 return;
